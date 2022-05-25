@@ -113,3 +113,10 @@ Route::post('/customer_login', 'App\Http\Controllers\API\Auth\CustomerAuthContro
 Route::post('/customer_forgot', 'App\Http\Controllers\API\Auth\CustomerAuthController@customer_forgot');
 
 Route::post('/customer_profile', 'App\Http\Controllers\API\Auth\CustomerAuthController@customer_profile');
+
+Route::get('/shops', 'App\Http\Controllers\API\Customer\CategoryController@shops');
+Route::get('/countries', 'App\Http\Controllers\API\Customer\CategoryController@countries');
+Route::get('/categories', 'App\Http\Controllers\API\Customer\CategoryController@categories');
+Route::post('/product_search', 'App\Http\Controllers\API\Customer\CategoryController@search');
+Route::post('/road_search', 'App\Http\Controllers\API\Customer\CategoryController@road_search');
+
