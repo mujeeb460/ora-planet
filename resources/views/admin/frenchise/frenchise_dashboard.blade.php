@@ -121,7 +121,7 @@
                         </div>
                         <!-- Ending of Dashboard header items area -->
 
-                    <!-- Starting of Dashboard Top reference + Most Used OS area -->
+                    <!-- Starting of Dashboard Top reference + Most Used OS area
                     <div class="reference-OS-area">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -141,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Ending of Dashboard Top reference + Most Used OS area -->
                         <!-- Starting of Dashboard header items area -->
                         <div class="panel panel-default admin">

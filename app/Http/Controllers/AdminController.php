@@ -471,10 +471,22 @@ class AdminController extends Controller
 
         $days = "";
         $sales = "";
-        for ($i = 0; $i < 30; $i++) {
-            $days .= "'" . date("d M", strtotime('-' . $i . ' days')) . "',";
-            $sales .=  "'" . Order::where('status', '=', 'completed')->whereDate('created_at', '=', date("Y-m-d", strtotime('-' . $i . ' days')))->count() . "',";
+
+        $start = $month = strtotime(date('Y-m-1')); //strtotime('2022-07-01');
+        $end = strtotime(date('Y-m-t')); //strtotime('2022-07-31');
+        while($month < $end)
+        {
+            $date = date('d M', $month);
+            $days .= "'" . $date . "',";
+
+            $sales .=  "'" . Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count() . "',";
+            $month = strtotime("+1 day", $month);
         }
+
+        // for ($i = 0; $i < 30; $i++) {
+        //     $days .= "'" . date("d M", strtotime('-' . $i . ' days')) . "',";
+        //     $sales .=  "'" . Order::where('status', '=', 'completed')->whereDate('created_at', '=', date("Y-m-d", strtotime('-' . $i . ' days')))->count() . "',";
+        // }
         return view('admin.frenchise.frenchise_dashboard', compact('customer', 'products', 'currency_sign', 'frenchise', 'count_vendor', 'pending', 'processing', 'completed', 'referrals', 'browsers', 'fid', 'days', 'sales'));
     }
 
