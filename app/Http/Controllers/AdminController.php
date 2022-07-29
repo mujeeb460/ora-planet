@@ -469,17 +469,17 @@ class AdminController extends Controller
         $cust = Order::whereIn('id', $c_order)->groupBy('user_id')->pluck('user_id');
         $customer = Customer::whereIn('id', $cust)->orderBy('id', 'desc')->get();
 
-
         $dailychart = array();
-        $start = $month = strtotime(date('Y-m-1')); //strtotime('2022-07-01');
-        $end = strtotime(date('Y-m-t')); //strtotime('2022-07-31');
+
+        $start = $month = strtotime(date('Y-m-1'));
+        $end = strtotime(date('Y-m-t'));
         while($month < $end)
         {
             $date = date('d M', $month);
-            $sales = Order::where('status', '=', 'pending')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
+            $sales = Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
 
             $dailychart[] = [
-                "group_name" => "Sale",
+                "group_name" => "Total Sales",
                 "name" => $date,
                 "value" => $sales
             ];
@@ -487,8 +487,24 @@ class AdminController extends Controller
             $month = strtotime("+1 day", $month);
         }
 
-        $dailychart = json_encode($dailychart);
+        $start = $month = strtotime(date('Y-m-1'));
+        $end = strtotime(date('Y-m-t'));
+        while($month < $end)
+        {
+            $date = date('d M', $month);
+            $sales = Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
 
+            $dailychart[] = [
+                "group_name" => "Seles Tax",
+                "name" => $date,
+                "value" => $sales
+            ];
+            
+            $month = strtotime("+1 day", $month);
+        }
+
+
+        $dailychart = json_encode($dailychart);
 
         $days = "";
         $sales = "";
