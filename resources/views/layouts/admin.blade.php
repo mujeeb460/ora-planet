@@ -23,6 +23,8 @@
         <link rel="icon" type="image/png" href="{{asset('assets/images/'.$gs->favicon)}}">
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+        
+        <link href="{{asset('assets/chart/bar.chart.min.css')}}" rel="stylesheet">
         <style type="text/css">
         .form-control {
         box-shadow: inset 0px 0px 0px rgba(0,0,0,.075);
@@ -388,6 +390,10 @@
         <script src="{{asset('assets/admin/js/main.js')}}"></script>
 
         <script data-main="dist/js/" src="js/require.min.js"></script>
+
+        
+        <script src='https://d3js.org/d3.v4.min.js'></script>
+        <script src="{{asset('assets/chart/jquery.bar.chart.min.js')}}"></script>
 
 <script>
 $(document).ready(function(){

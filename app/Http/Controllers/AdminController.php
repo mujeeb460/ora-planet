@@ -469,6 +469,27 @@ class AdminController extends Controller
         $cust = Order::whereIn('id', $c_order)->groupBy('user_id')->pluck('user_id');
         $customer = Customer::whereIn('id', $cust)->orderBy('id', 'desc')->get();
 
+
+        $dailychart = array();
+        $start = $month = strtotime(date('Y-m-1')); //strtotime('2022-07-01');
+        $end = strtotime(date('Y-m-t')); //strtotime('2022-07-31');
+        while($month < $end)
+        {
+            $date = date('d M', $month);
+            $sales = Order::where('status', '=', 'pending')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
+
+            $dailychart[] = [
+                "group_name" => "Sale",
+                "name" => $date,
+                "value" => $sales
+            ];
+            
+            $month = strtotime("+1 day", $month);
+        }
+
+        $dailychart = json_encode($dailychart);
+
+
         $days = "";
         $sales = "";
 
@@ -487,7 +508,7 @@ class AdminController extends Controller
         //     $days .= "'" . date("d M", strtotime('-' . $i . ' days')) . "',";
         //     $sales .=  "'" . Order::where('status', '=', 'completed')->whereDate('created_at', '=', date("Y-m-d", strtotime('-' . $i . ' days')))->count() . "',";
         // }
-        return view('admin.frenchise.frenchise_dashboard', compact('customer', 'products', 'currency_sign', 'frenchise', 'count_vendor', 'pending', 'processing', 'completed', 'referrals', 'browsers', 'fid', 'days', 'sales'));
+        return view('admin.frenchise.frenchise_dashboard', compact('customer', 'products', 'currency_sign', 'frenchise', 'count_vendor', 'pending', 'processing', 'completed', 'referrals', 'browsers', 'fid', 'days', 'sales','dailychart'));
     }
 
     public function newupdates()
