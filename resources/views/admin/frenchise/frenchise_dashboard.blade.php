@@ -120,22 +120,22 @@
                         </div>
                     </div>
                         
-                    <div class="panel panel-default admin">
+                    <!-- <div class="panel panel-default admin">
                         <div class="panel-heading admin-title">Total Sales of <?php echo date('F Y') ?></div>
                             <div class="panel-body dashboard-body">
                                 <div id="chtAnimatedBarChart" class="bcBar"></div>
                             </div>
                         </div>
                     <div>
-                    
+                     -->
                         <!-- Ending of Dashboard header items area -->
 
-                    <!-- Starting of Dashboard Top reference + Most Used OS area
+                    <!-- Starting of Dashboard Top reference + Most Used OS area -->
                     <div class="reference-OS-area">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="panel panel-default admin top-reference-area">
-                                    <div class="panel-heading">Top Referrals</div>
+                                    <div class="panel-heading">Daily Chart</div>
                                     <div class="panel-body">
                                         <div id="chartContainer-topReference"></div>
                                     </div>
@@ -143,14 +143,17 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="panel panel-default admin top-reference-area">
-                                    <div class="panel-heading">Most Used OS</div>
+                                    <div class="panel-heading">Monthly Chart</div>
                                     <div class="panel-body">
                                         <div id="chartContainer-os"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+
+
+                    
                     <!-- Ending of Dashboard Top reference + Most Used OS area -->
                         <!-- Starting of Dashboard header items area -->
                         <div class="panel panel-default admin">
@@ -175,66 +178,12 @@
 
     <script language="JavaScript">
 
-    $(function() {
-      //var chart_data = getData();
-      var chart_data = {!! $dailychart !!};
+//     $(function() {
+//       //var chart_data = getData();
+//       var chart_data = {!! $dailychart !!};
 
-      $('#chtAnimatedBarChart').animatedBarChart({ data: chart_data });
-   });
-
-   getData = function() {
-      return [
-         { "group_name": "Google", "name": "Jan", "value": 38367 },
-         { "group_name": "Google", "name": "Feb", "value": 32684 },
-         { "group_name": "Google", "name": "Mar", "value": 28236 },
-         { "group_name": "Google", "name": "Apr", "value": 44205 },
-         { "group_name": "Google", "name": "May", "value": 3357 },
-         { "group_name": "Google", "name": "Jun", "value": 3511 },
-         { "group_name": "Google", "name": "Jul", "value": 10372 },
-         { "group_name": "Google", "name": "Aug", "value": 15565 },
-         { "group_name": "Google", "name": "Sep", "value": 23752 },
-         { "group_name": "Google", "name": "Oct", "value": 28927 },
-         { "group_name": "Google", "name": "Nov", "value": 21795 },
-         { "group_name": "Google", "name": "Dec", "value": 49217 },
-         { "group_name": "Apple", "name": "Jan", "value": 28827 },
-         { "group_name": "Apple", "name": "Feb", "value": 13671 },
-         { "group_name": "Apple", "name": "Mar", "value": 27670 },
-         { "group_name": "Apple", "name": "Apr", "value": 6274 },
-         { "group_name": "Apple", "name": "May", "value": 12563 },
-         { "group_name": "Apple", "name": "Jun", "value": 31263 },
-         { "group_name": "Apple", "name": "Jul", "value": 24848 },
-         { "group_name": "Apple", "name": "Aug", "value": 41199 },
-         { "group_name": "Apple", "name": "Sep", "value": 18952 },
-         { "group_name": "Apple", "name": "Oct", "value": 30701 },
-         { "group_name": "Apple", "name": "Nov", "value": 16554 },
-         { "group_name": "Apple", "name": "Dec", "value": 36399 },
-         { "group_name": "Microsoft", "name": "Jan", "value": 38674 },
-         { "group_name": "Microsoft", "name": "Feb", "value": 9595 },
-         { "group_name": "Microsoft", "name": "Mar", "value": 7520 },
-         { "group_name": "Microsoft", "name": "Apr", "value": 2568 },
-         { "group_name": "Microsoft", "name": "May", "value": 6583 },
-         { "group_name": "Microsoft", "name": "Jun", "value": 44485 },
-         { "group_name": "Microsoft", "name": "Jul", "value": 3405 },
-         { "group_name": "Microsoft", "name": "Aug", "value": 31709 },
-         { "group_name": "Microsoft", "name": "Sep", "value": 45442 },
-         { "group_name": "Microsoft", "name": "Oct", "value": 37580 },
-         { "group_name": "Microsoft", "name": "Nov", "value": 23445 },
-         { "group_name": "Microsoft", "name": "Dec", "value": 7554 },
-         { "group_name": "Samsung", "name": "Jan", "value": 40110 },
-         { "group_name": "Samsung", "name": "Feb", "value": 35605 },
-         { "group_name": "Samsung", "name": "Mar", "value": 15768 },
-         { "group_name": "Samsung", "name": "Apr", "value": 15075 },
-         { "group_name": "Samsung", "name": "May", "value": 12424 },
-         { "group_name": "Samsung", "name": "Jun", "value": 12227 },
-         { "group_name": "Samsung", "name": "Jul", "value": 40906 },
-         { "group_name": "Samsung", "name": "Aug", "value": 34032 },
-         { "group_name": "Samsung", "name": "Sep", "value": 18110 },
-         { "group_name": "Samsung", "name": "Oct", "value": 4755 },
-         { "group_name": "Samsung", "name": "Nov", "value": 42202 },
-         { "group_name": "Samsung", "name": "Dec", "value": 36183 }
-      ];
-   }
-
+//       $('#chtAnimatedBarChart').animatedBarChart({ data: chart_data });
+//    });
 
         displayLineChart();
         function displayLineChart() {
@@ -266,6 +215,7 @@
         </script>
 
 <script type="text/javascript">
+
         var chart1 = new CanvasJS.Chart("chartContainer-topReference",
             {
                 exportEnabled: true,
@@ -287,24 +237,40 @@
                         type: "pie",
                         showInLegend: true,
                         legendText: "",
-                        toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
-                        indexLabel: "#percent%",
+                        toolTipContent: "<b>{name}</b>: {y} <b>({percentage}%)</b>",
+		                indexLabel: "{y} ({percentage}%)",
                         indexLabelFontColor: "white",
                         indexLabelPlacement: "inside",
                         dataPoints: [
-                                @foreach($referrals as $browser)
-                                    {y:{{$browser->total_count}}, name: "{{$browser->referral}}"},
-                                @endforeach
+                            { y: {{$userSubscription_daily}}, name: "Total Amount" },
+                            { y: {{$userSubscription_daily/100*$frenchise->percentage}}, name: "Frenchise Percengate" },
+                            { y: {{$userSubscription_daily/100*12}}, name: "Expanses" },
+                            { y: {{$userSubscription_daily/100*4.5}},  name: "Tax" }
                         ]
                     }
                 ]
             });
+        calculatePercentage();
         chart1.render();
 
-        var chart = new CanvasJS.Chart("chartContainer-os",
+        function calculatePercentage() {
+            var dataPoint = chart1.options.data[0].dataPoints;
+            var total = dataPoint[0].y;
+            for(var i = 0; i < dataPoint.length; i++) {
+                if(i == 0) {
+                    chart1.options.data[0].dataPoints[i].percentage = 100;
+                } else {
+                    chart1.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+                }
+            }
+        }
+
+
+        var chart2 = new CanvasJS.Chart("chartContainer-os",
             {
                 exportEnabled: true,
                 animationEnabled: true,
+
                 legend: {
                     cursor: "pointer",
                     horizontalAlign: "right",
@@ -321,19 +287,72 @@
                         type: "pie",
                         showInLegend: true,
                         legendText: "",
-                        toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
-                        indexLabel: "#percent%",
+                        toolTipContent: "<b>{name}</b>: {y} <b>({percentage}%)</b>",
+		                indexLabel: "{y} ({percentage}%)",
                         indexLabelFontColor: "white",
                         indexLabelPlacement: "inside",
                         dataPoints: [
-                            @foreach($browsers as $browser)
-                                {y:{{$browser->total_count}}, name: "{{$browser->referral}}"},
-                            @endforeach
+                            { y: {{$userSubscription_monthly}}, name: "Total Amount" },
+                            { y: {{$userSubscription_monthly/100*$frenchise->percentage}}, name: "Frenchise Percengate" },
+                            { y: {{$userSubscription_monthly/100*12}}, name: "Expanses" },
+                            { y: {{$userSubscription_monthly/100*4.5}},  name: "Tax" }
                         ]
                     }
                 ]
             });
-        chart.render();
+        calculatePercentage2();
+        chart2.render();
+
+        function calculatePercentage2() {
+            var dataPoint = chart2.options.data[0].dataPoints;
+            var total = dataPoint[0].y;
+            for(var i = 0; i < dataPoint.length; i++) {
+                if(i == 0) {
+                    chart2.options.data[0].dataPoints[i].percentage = 100;
+                } else {
+                    chart2.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+                }
+            }
+        }
+
+
+
+        // var chart = new CanvasJS.Chart("chartContainer-os",
+        //     {
+        //         exportEnabled: true,
+        //         animationEnabled: true,
+        //         legend: {
+        //             cursor: "pointer",
+        //             horizontalAlign: "right",
+        //             verticalAlign: "center",
+        //             fontSize: 16,
+        //             padding: {
+        //                 top: 20,
+        //                 bottom: 2,
+        //                 right: 20,
+        //             },
+        //         },
+        //         data: [
+        //             {
+        //                 type: "pie",
+        //                 showInLegend: true,
+        //                 legendText: "",
+        //                 toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
+        //                 indexLabel: "#percent%",
+        //                 indexLabelFontColor: "white",
+        //                 indexLabelPlacement: "inside",
+        //                 dataPoints: [
+        //                     @foreach($browsers as $browser)
+        //                         {y:{{$browser->total_count}}, name: "{{$browser->referral}}"},
+        //                     @endforeach
+        //                 ]
+        //             }
+        //         ]
+        //     });
+        // chart.render();
+
+        
+        
         
     
 </script>

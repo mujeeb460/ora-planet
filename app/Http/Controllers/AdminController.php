@@ -469,39 +469,44 @@ class AdminController extends Controller
         $cust = Order::whereIn('id', $c_order)->groupBy('user_id')->pluck('user_id');
         $customer = Customer::whereIn('id', $cust)->orderBy('id', 'desc')->get();
 
+
+        $userSubscription_daily = UserSubscription::whereIn('user_id', $vendors)->whereDate('created_at', '=', date('Y-m-d'))->sum('price');
+        $userSubscription_monthly = UserSubscription::whereIn('user_id', $vendors)->whereMonth('created_at', Carbon::now()->month)->sum('price');
+        $userSubscription_yearly = UserSubscription::whereIn('user_id', $vendors)->whereYear('created_at', Carbon::now()->year)->sum('price');
+
         $dailychart = array();
 
-        $start = $month = strtotime(date('Y-m-1'));
-        $end = strtotime(date('Y-m-t'));
-        while($month < $end)
-        {
-            $date = date('d M', $month);
-            $sales = Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
+        // $start = $month = strtotime(date('Y-m-1'));
+        // $end = strtotime(date('Y-m-t'));
+        // while($month < $end)
+        // {
+        //     $date = date('d M', $month);
+        //     $sales = Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
 
-            $dailychart[] = [
-                "group_name" => "Total Sales",
-                "name" => $date,
-                "value" => $sales
-            ];
+        //     $dailychart[] = [
+        //         "group_name" => "Total Sales",
+        //         "name" => $date,
+        //         "value" => $sales
+        //     ];
             
-            $month = strtotime("+1 day", $month);
-        }
+        //     $month = strtotime("+1 day", $month);
+        // }
 
-        $start = $month = strtotime(date('Y-m-1'));
-        $end = strtotime(date('Y-m-t'));
-        while($month < $end)
-        {
-            $date = date('d M', $month);
-            $sales = Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
+        // $start = $month = strtotime(date('Y-m-1'));
+        // $end = strtotime(date('Y-m-t'));
+        // while($month < $end)
+        // {
+        //     $date = date('d M', $month);
+        //     $sales = Order::where('status', '=', 'completed')->whereDate('created_at', '=', date('Y-m-d', $month))->count();
 
-            $dailychart[] = [
-                "group_name" => "Seles Tax",
-                "name" => $date,
-                "value" => $sales
-            ];
+        //     $dailychart[] = [
+        //         "group_name" => "Seles Tax",
+        //         "name" => $date,
+        //         "value" => $sales
+        //     ];
             
-            $month = strtotime("+1 day", $month);
-        }
+        //     $month = strtotime("+1 day", $month);
+        // }
 
 
         $dailychart = json_encode($dailychart);
@@ -524,7 +529,7 @@ class AdminController extends Controller
         //     $days .= "'" . date("d M", strtotime('-' . $i . ' days')) . "',";
         //     $sales .=  "'" . Order::where('status', '=', 'completed')->whereDate('created_at', '=', date("Y-m-d", strtotime('-' . $i . ' days')))->count() . "',";
         // }
-        return view('admin.frenchise.frenchise_dashboard', compact('customer', 'products', 'currency_sign', 'frenchise', 'count_vendor', 'pending', 'processing', 'completed', 'referrals', 'browsers', 'fid', 'days', 'sales','dailychart'));
+        return view('admin.frenchise.frenchise_dashboard', compact('customer', 'products', 'currency_sign', 'frenchise', 'count_vendor', 'pending', 'processing', 'completed', 'referrals', 'browsers', 'fid', 'days', 'sales','dailychart','userSubscription_daily','userSubscription_monthly','userSubscription_yearly'));
     }
 
     public function newupdates()
