@@ -474,6 +474,10 @@ class AdminController extends Controller
         $userSubscription_monthly = UserSubscription::whereIn('user_id', $vendors)->whereMonth('created_at', Carbon::now()->month)->sum('price');
         $userSubscription_yearly = UserSubscription::whereIn('user_id', $vendors)->whereYear('created_at', Carbon::now()->year)->sum('price');
 
+        if(!$userSubscription_daily){ $userSubscription_daily=1; }
+        if(!$userSubscription_monthly){$userSubscription_monthly = 1;}
+        if(!$userSubscription_yearly){$userSubscription_yearly=1;}
+
         $dailychart = array();
 
         // $start = $month = strtotime(date('Y-m-1'));
