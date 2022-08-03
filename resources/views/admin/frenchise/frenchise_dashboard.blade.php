@@ -237,15 +237,16 @@
                         type: "pie",
                         showInLegend: true,
                         legendText: "",
-                        toolTipContent: "<b>{name}</b>: {y} <b>({percentage}%)</b>",
-		                indexLabel: "{y} ({percentage}%)",
+                        toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
+                        indexLabel: "{y} (#percent%)",
                         indexLabelFontColor: "white",
                         indexLabelPlacement: "inside",
                         dataPoints: [
-                            { y: {{$userSubscription_daily}}, name: "Total Amount" },
-                            { y: {{$userSubscription_daily/100*$frenchise->percentage}}, name: "Frenchise Percengate" },
-                            { y: {{$userSubscription_daily/100*12}}, name: "Expanses" },
-                            { y: {{$userSubscription_daily/100*4.5}},  name: "Tax" }
+                            { y: {{$userSubscription_daily-(($userSubscription_daily/100*$frenchise->percentage)+($userSubscription_daily/100*$frenchise->sale_tax)+($userSubscription_daily/100*$frenchise->registration_tax)+($userSubscription_daily/100*$frenchise->other_expenses))}}, name: "Company" },
+                            { y: {{$userSubscription_daily/100*$frenchise->percentage}}, name: "Monthly" },
+                            { y: {{$userSubscription_daily/100*$frenchise->sale_tax}}, name: "Sale Tax" },
+                            { y: {{$userSubscription_daily/100*$frenchise->registration_tax}},  name: "Registration Tax" },
+                            { y: {{$userSubscription_daily/100*$frenchise->other_expenses}},  name: "Other Expenses" }
                         ]
                     }
                 ]
@@ -287,15 +288,16 @@
                         type: "pie",
                         showInLegend: true,
                         legendText: "",
-                        toolTipContent: "<b>{name}</b>: {y} <b>({percentage}%)</b>",
-		                indexLabel: "{y} ({percentage}%)",
+                        toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
+                        indexLabel: "{y} (#percent%)",
                         indexLabelFontColor: "white",
                         indexLabelPlacement: "inside",
                         dataPoints: [
-                            { y: {{$userSubscription_monthly}}, name: "Total Amount" },
-                            { y: {{$userSubscription_monthly/100*$frenchise->percentage}}, name: "Frenchise Percengate" },
-                            { y: {{$userSubscription_monthly/100*12}}, name: "Expanses" },
-                            { y: {{$userSubscription_monthly/100*4.5}},  name: "Tax" }
+                            { y: {{$userSubscription_monthly-(($userSubscription_monthly/100*$frenchise->percentage)+($userSubscription_monthly/100*$frenchise->sale_tax)+($userSubscription_monthly/100*$frenchise->registration_tax)+($userSubscription_monthly/100*$frenchise->other_expenses))}}, name: "Company" },
+                            { y: {{$userSubscription_monthly/100*$frenchise->percentage}}, name: "Monthly" },
+                            { y: {{$userSubscription_monthly/100*$frenchise->sale_tax}}, name: "Sale Tax" },
+                            { y: {{$userSubscription_monthly/100*$frenchise->registration_tax}},  name: "Registration Tax" },
+                            { y: {{$userSubscription_monthly/100*$frenchise->other_expenses}},  name: "Other Expenses" }
                         ]
                     }
                 ]
