@@ -239,6 +239,7 @@
                         legendText: "",
                         toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
                         indexLabel: "{y} (#percent%)",
+                        percentFormatString: "#0.##",
                         indexLabelFontColor: "white",
                         indexLabelPlacement: "inside",
                         dataPoints: [
@@ -290,6 +291,7 @@
                         legendText: "",
                         toolTipContent: "{name}: <strong>{#percent%} (#percent%)</strong>",
                         indexLabel: "{y} (#percent%)",
+                        percentFormatString: "#0.##",
                         indexLabelFontColor: "white",
                         indexLabelPlacement: "inside",
                         dataPoints: [
