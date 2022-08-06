@@ -37,7 +37,10 @@ class CreateFrenchisesTable extends Migration
             $table->string('percentage')->nullable(); 
             $table->string('monthly_percentage')->nullable(); 
             $table->string('yearly_percentage')->nullable(); 
-            $table->string('completion_percentage')->nullable(); 
+            $table->string('completion_percentage')->nullable();
+            $table->float('sale_tax', 11, 2)->nullable()->default(0);
+            $table->float('registration_tax', 11, 2)->nullable()->default(0);
+            $table->float('other_expenses', 11, 2)->nullable()->default(0);
             $table->string('vitnes')->nullable(); 
             $table->string('father_vitnes')->nullable(); 
             $table->string('cnic_vitnes')->nullable(); 
